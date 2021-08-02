@@ -98,7 +98,7 @@ async def not_joined(client: Client, message: Message):
     message_text = message.text
     try:
         command, argument = message_text.split()
-        text = text + f" <b>വീണ്ടും <a href='https://t.me/{client.username}?start={argument}'>try ചെയൂ</a></b>"
+        text = text + f" <b>വീണ്ടും ഈ refresh button click ചെയ്ത് start കൊടുക്ക്<a href='https://t.me/{client.username}?start={argument}'>refresh</a></b>"
     except ValueError:
         pass
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
