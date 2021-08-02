@@ -94,7 +94,7 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>ഞങ്ങളുടെ Data Base പ്രകാരം നിങ്ങൾ ഇതുവരെ ഞങ്ങളുടെ Update Channel ലിൽ join ചെയ്തിട്ടില്ല\n\nഅതുകൊണ്ട് താഴെ കാണുന്ന **join Channel** എന്ന link ഉപയോഗിച്ചു update channel ലിൽ member ആവൂ</b>"
+    text = "<b>ഞങ്ങളുടെ Data Base പ്രകാരം നിങ്ങൾ ഇതുവരെ ഞങ്ങളുടെ Update Channel ലിൽ join ചെയ്തിട്ടില്ല\n\nഅതുകൊണ്ട് താഴെ കാണുന്ന (join Channel) എന്ന link ഉപയോഗിച്ചു update channel ലിൽ അംഗമാകൂ</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
