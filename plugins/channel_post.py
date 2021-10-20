@@ -24,7 +24,7 @@ async def channel_post(client: Client, message: Message):
     converted_id = post_message.message_id
     string = f"irupc-{converted_id}-{CHANNEL_ID_MOD}"
     base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
+    link = f"https://t.me/Rule_Breakers_assistant2bot?start={base64_string}"
 
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
 
@@ -42,7 +42,7 @@ async def new_post(client: Client, message: Message):
     converted_id = message.message_id
     string = f"irupc-{converted_id}-{CHANNEL_ID_MOD}"
     base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
+    link = f"https://t.me/Rule_Breakers_assistant2bot?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     try:
         await message.edit_reply_markup(reply_markup)
