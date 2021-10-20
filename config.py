@@ -14,6 +14,9 @@ API_HASH = os.environ.get("API_HASH", "")
 #Your db channel Id
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 
+#Your db channel Id Mod
+CHANNEL_ID_MOD = int(os.environ.get("CHANNEL_ID", ""))
+
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 
@@ -32,7 +35,7 @@ except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<code>{filename}</code>\n\n┏━━━━•❅•°•❈•°•❅•━━━━┓\n✰👑rule breakers👑✰\nGroup owner - <b>@viha_is_power</b>\n┗━━━━•❅•°•❈•°•❅•━━━━┛")
 
 #Set true if you want Disable your Channel Posts Share button
 if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':
@@ -41,7 +44,7 @@ else:
     DISABLE_CHANNEL_BUTTON = False
 
 ADMINS.append(OWNER_ID)
-ADMINS.append(1250450587)
+ADMINS.append(1177233175)
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
