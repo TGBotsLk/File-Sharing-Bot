@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
+from config import ADMINS, CHANNEL_ID_MOD, DISABLE_CHANNEL_BUTTON, CHANNEL_ID
 from helper_func import encode
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','batch','genlink']))
@@ -22,7 +22,7 @@ async def channel_post(client: Client, message: Message):
         await reply_text.edit_text("Something went Wrong..!")
         return
     converted_id = post_message.message_id
-    string = f"irupc-{converted_id}-{CHANNEL_ID.split("-100")[1]}"
+    string = f"irupc-{converted_id}-{CHANNEL_ID_MOD}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
 
@@ -40,7 +40,7 @@ async def new_post(client: Client, message: Message):
         return
 
     converted_id = message.message_id
-    string = f"irupc-{converted_id}-{CHANNEL_ID.split("-100")[1]}"
+    string = f"irupc-{converted_id}-{CHANNEL_ID_MOD}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
