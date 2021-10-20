@@ -16,7 +16,7 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "1250450587"
+      "value": ""
     },
     "APP_ID":{
       "description": "your app id, take it from my.telegram.org",
@@ -28,7 +28,11 @@
     },
     "CHANNEL_ID":{
       "description": "make a channel (database channel), then make the bot as admin in channel, and it's id",
-      "value": "-100"
+      "value": ""
+    },
+    "CHANNEL_ID_MOD":{
+      "description": "Above Channel ID without -100",
+      "value": ""
     },
     "FORCE_SUB_CHANNEL":{
       "description": "id of the channel or group, if you want enable force sub feature else put 0",
@@ -41,6 +45,11 @@
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
+      "required": false
+    },
+    "CUSTOM_CAPTION": {
+      "description": "Custom Caption for Documents",
+      "value": "<code>{filename}</code>\n\n┏━━━━•❅•°•❈•°•❅•━━━━┓\n👑rule breakers👑✰\nGroup owner - <b>@viha_is_power</b>\n┗━━━━•❅•°•❈•°•❅•━━━━┛",
       "required": false
     }
   }
