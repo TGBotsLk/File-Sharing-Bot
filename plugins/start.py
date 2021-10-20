@@ -21,28 +21,13 @@ async def start_command(client: Client, message: Message):
         argument = string.split("-")
         if len(argument) == 3:
             try:
-                start = int(int(argument[1]) / abs(client.db_channel.id))
-                end = int(int(argument[2]) / abs(client.db_channel.id))
-            except:
-                return
-            if start <= end:
-                ids = range(start,end+1)
-            else:
-                ids = []
-                i = start
-                while True:
-                    ids.append(i)
-                    i -= 1
-                    if i < end:
-                        break
-        elif len(argument) == 2:
-            try:
-                ids = [int(int(argument[1]) / abs(client.db_channel.id))]
+                ids = [int(argument[1])]
+                channel = [int(argument[2])]
             except:
                 return
         temp_msg = await message.reply("Please wait...")
         try:
-            messages = await get_messages(client, ids)
+            messages = await get_messages(client, ids, channel)
         except:
             await message.reply_text("Something went wrong..!")
             return
@@ -55,10 +40,13 @@ async def start_command(client: Client, message: Message):
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
-            if DISABLE_CHANNEL_BUTTON:
-                reply_markup = msg.reply_markup
-            else:
-                reply_markup = None
+            reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🎬 Join Our Movie Group", url="https://t.me/joinchat/Q1uroGQ645U1OTg1"),
+                ]
+            ]
+            )
 
             try:
                 await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
@@ -94,7 +82,7 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>ഞങ്ങളുടെ Data Base പ്രകാരം നിങ്ങൾ ഇതുവരെ ഞങ്ങളുടെ Update Channel ലിൽ join ചെയ്തിട്ടില്ല\n\nഅതുകൊണ്ട് താഴെ കാണുന്ന (join Channel) എന്ന link ഉപയോഗിച്ചു update channel ലിൽ അംഗമാകൂ\n\nYou have not yet joined our Update Channel as per our Data Base\n\nso join the update channel using the link (join Channel) below\n\nஎங்கள் தரவுத்தளத்தின்படி நீங்கள் இன்னும் எங்கள் புதுப்பிப்பு சேனலில் சேரவில்லை, எனவே கீழேயுள்ள இணைப்பைப் பயன்படுத்தி சேனலில் சேருங்கள் (join channel)\n\nನಮ್ಮ ಡೇಟಾ ಬೇಸ್ ಪ್ರಕಾರ ನೀವು ಇನ್ನೂ ನಮ್ಮ ಅಪ್ಡೇಟ್ ಚಾನೆಲ್ ಗೆ ಸೇರಿಕೊಂಡಿಲ್ಲ ಹಾಗಾಗಿ ಕೆಳಗಿನ ಲಿಂಕ್ ಬಳಸಿ (join channel) ಅಪ್ಡೇಟ್ ಚಾನೆಲ್ ಗೆ ಸೇರಿಕೊಳ್ಳಿ\n\nమా డేటా బేస్ ప్రకారం మీరు ఇంకా మా అప్‌డేట్ ఛానెల్‌లో చేరలేదు కాబట్టి దిగువ లింక్ (join channel) ఉపయోగించి అప్‌డేట్ ఛానెల్‌లో చేరండి\n\nआप अभी तक हमारे डेटा बेस के अनुसार हमारे अपडेट चैनल में शामिल नहीं हुए हैं, इसलिए नीचे दिए गए लिंक (join channel) का उपयोग करके अपडेट चैनल से जुड़ें </b>"
+    text = "<b>📌මගෙන් Film ගන්න නම් ඔයා අපේ Channel එකට Join වෙලා ඉන්න ඕනි.</b>\n<b>📌You need to join in my Channel to use me.</b>\n\n<b>⏳පහල Button එක Click කරල Channel එකට Join වෙන්න.</b>\n⏳Kindly Please join Channel\n\n😇Join වුනාට පස්සෙ පහල 'තියන Try Again' උඩ Click කරන්න. ඔයාට Film එක ලැබෙයි.\nAfter Join to Channel hit on 'Try Again' Text to Get Movie \n\n<b>👍🏽 Try Again 🔗 (https://t.me/irupc_sever_bot?start=Z2V0LTM3NjE2LWlydXBjLWdldA==)</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
